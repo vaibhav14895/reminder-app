@@ -20,4 +20,6 @@ from app import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home,name='home'),
+    path('addlist/',views.addtask,name='addtask'),
+    path('delete/<str:uid>/',views.deletetask,name="delete")
 ]

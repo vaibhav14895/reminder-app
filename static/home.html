@@ -61,7 +61,9 @@
 
     <h1>todays task</h1>
     {% for a in task %}
-    <h3>{{a.todo}} {{a.date}}</h3>
+    <h3>{{forloop.couter}}{{a.todo}} <a href="{% url 'delete' a.uid %}">delete</a></h3>
+    
     {% endfor %}
+    <a href="{% url 'addtask' %}">add more task</a>
 </body>
 </html>

@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.utils import timezone
 from .models import *
+from .forms import *
 # Create your views here.
 
 def home(request):
@@ -56,4 +57,18 @@ def converter(value):
 
 
 
+def addtask(request):
+    if request.method =='POST':
+        inputform=addtaskss(request.POST)
+        if inputform.is_valid():
+            inputform.save()
+            return redirect('home')
+    else:
+        inputform=addtaskss()
+    return render(request,'form.html',{'inputform':inputform})
 
+
+def deletetask(request,uid):
+    d=tasks.objects.filter(uid=uid)
+    d.delete()
+    return redirect('home')
