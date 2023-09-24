@@ -17,6 +17,11 @@ def home(request):
     day=weekday[str(data)]
     d=breakfast.objects.get(dates=data)
     timer=times.objects.get(day=data)
+    today3=str(timezone.now().year)
+    today1=str(timezone.now().month)
+    today2=str(timezone.now().day)
+    today=f'{today3}-{today1}-{today2}'
+    todaytasks=tasks.objects.all().filter(date=today)
     context={
         'day':day,
         'breakfast':d.food1,
@@ -37,6 +42,7 @@ def home(request):
         'time8':converter(timer.three),
         'time9':converter(timer.four),
         'time10':converter(timer.five),
+        'task':todaytasks,
     }
     return render(request,'home.html',context)
 
@@ -44,13 +50,7 @@ def home(request):
 
 def converter(value):
     a=int (value)
-    choice = ['HPC','SE','DAA','CN','AI','BIG DATA','CN lab','DAA lab','no class']
-    def nested():
-        value=value+1
-        b=int(value)
-        if b==9:
-            print(choice)
-            return            
+    choice = ['HPC','SE','DAA','CN','AI','BIG DATA','CN lab','DAA lab','no class']           
     return choice[a-1]
 
 

@@ -50,3 +50,8 @@ class times(models.Model):
             validators.MinValueValidator(0, message='Value must be greater than or equal to 0'),
             validators.MaxValueValidator(6, message='Value must be less than or equal to 6'),
         ])
+    
+    
+class tasks(models.Model):
+    todo=models.CharField(max_length=100,default="null")
+    date=models.DateField(auto_now=False, auto_now_add=False)
