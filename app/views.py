@@ -28,38 +28,30 @@ def home(request):
         'dinner':d.food4,
         'dinnerdrink':d.drink4,
         'time1':converter(timer.eight),
-        'time2':timer.nine,
-        'time3':timer.ten,
-        'time4':timer.eleven,
-        'time5':timer.twelve,
-        'time6':timer.one,
-        'time7':timer.two,
-        'time8':timer.three,
-        'time9':timer.four,
-        'time10':timer.five,
+        'time2':converter(timer.nine),
+        'time3':converter(timer.ten),
+        'time4':converter(timer.eleven),
+        'time5':converter(timer.twelve),
+        'time6':converter(timer.one),
+        'time7':converter(timer.two),
+        'time8':converter(timer.three),
+        'time9':converter(timer.four),
+        'time10':converter(timer.five),
     }
     return render(request,'home.html',context)
 
 
 
 def converter(value):
-    choice = [
-        ('1', 'HPC'),
-        ('2', 'SE'),
-        ('3', 'DAA'),
-        ('4', 'CN'),
-        ('5', 'AI'),
-        ('6', 'BIG DATA'),
-        ('7', 'CN lab'),
-        ('8', 'DAA lab'),
-        ('9', 'null'),
-    ]
-    for a in choice:
-        if value==choice[a]:
-          time=choice[a]
-    
-    print(value)
-    return time
+    a=int (value)
+    choice = ['HPC','SE','DAA','CN','AI','BIG DATA','CN lab','DAA lab','no class']
+    def nested():
+        value=value+1
+        b=int(value)
+        if b==9:
+            print(choice)
+            return            
+    return choice[a-1]
 
 
 
