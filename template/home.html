@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/red.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="meal">
+        <div class="days">
+    <h1 id ="day">{{day}}</h1>
+    </div>
+    <h1  id ="meal">Meals</h1>
+    <table border="black">
+        <tr>
+            <th>Breakfast</th>
+            <th>Breakfastdrink</th>
+            <th>Lunch</th>
+            <th>Lunchdrink</th>
+            <th>Evening</th>
+            <th>Eveningdrink</th>
+            <th>Dinner</th>
+            <th>Dinnerdrink</th>
+        </tr>
+        <tr>
+        <td>{{breakfast}}</td>
+        <td>{{breakfastdrink}}</td>
+        <td>{{lunch}}</td>
+        <td>{{lunchdrink}}</td>
+        <td>{{evening}}</td>
+        <td>{{eveningdrink}}</td>
+        <td>{{dinner}}</td>
+        <td>{{dinnerdrink}}</td>
+        </tr>
+    </table>
+    </div>
+    <div class="class">
+    <h1 id ="classes">Classes</h1>
+    <table border="black">
+        <tr>
+            <th>8-9</th>
+            <th>9-10</th>
+            <th>10-11</th>
+            <th>11-12</th>
+            <th>12-1</th>
+            <th>1-2</th>
+            <th>2-3</th>
+            <th>3-4</th>
+            <th>4-5</th>
+            <th>5-6</th>
+        </tr>
+        <tr>
+            <td>{{time1}}</td>
+            <td>{{time2}}</td>
+            <td>{{time3}}</td>
+            <td>{{time4}}</td>
+            <td>{{time5}}</td>
+            <td>{{time6}}</td>
+            <td>{{time7}}</td>
+            <td>{{time8}}</td>
+            <td>{{time9}}</td>
+            <td>{{time10}}</td>
+        </tr>
+    </table>
+</div>
+<div class="tododiv">
+<div class="todo">
+    <h1 id="todohead" >To do List</h1>
+    {% for a in task %}
+    <h3>{{forloop.couter}} {{a.todo}} <a href="{% url 'delete' a.uid %}" class="edittask">delete</a></h3>
+    {% endfor %} 
+    <a href="{% url 'addtask' %}" class="edittask">Add task</a>
+    </div>
+    </div>
+</body>
+</html>
