@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% load static  %}
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/red.css' %}">
     <title>Document</title>
 </head>
 <body>
-    <h1>{{day}}</h1>
-    <h1>meals</h1>
+    <div class="meal">
+        <div class="days">
+    <h1 id ="day">{{day}}</h1>
+    </div>
+    <h1  id ="meal">Meals</h1>
     <table border="black">
         <tr>
-            <th>breakfast</th>
-            <th>breakfastdrink</th>
-            <th>lunch</th>
-            <th>lunchdrink</th>
-            <th>evening</th>
-            <th>eveningdrink</th>
-            <th>dinner</th>
-            <th>dinnerdrink</th>
+            <th>Breakfast</th>
+            <th>Breakfastdrink</th>
+            <th>Lunch</th>
+            <th>Lunchdrink</th>
+            <th>Evening</th>
+            <th>Eveningdrink</th>
+            <th>Dinner</th>
+            <th>Dinnerdrink</th>
         </tr>
         <tr>
         <td>{{breakfast}}</td>
@@ -31,7 +36,9 @@
         <td>{{dinnerdrink}}</td>
         </tr>
     </table>
-    <h1>classes</h1>
+    </div>
+    <div class="class">
+    <h1 id ="classes">Classes</h1>
     <table border="black">
         <tr>
             <th>8-9</th>
@@ -58,12 +65,15 @@
             <td>{{time10}}</td>
         </tr>
     </table>
-
-    <h1>todays task</h1>
+</div>
+<div class="tododiv">
+<div class="todo">
+    <h1 id="todohead" >To do List</h1>
     {% for a in task %}
-    <h3>{{forloop.couter}}{{a.todo}} <a href="{% url 'delete' a.uid %}">delete</a></h3>
-    
-    {% endfor %}
-    <a href="{% url 'addtask' %}">add more task</a>
+    <h3>{{forloop.couter}} {{a.todo}} <a href="{% url 'delete' a.uid %}" class="edittask">delete</a></h3>
+    {% endfor %} 
+    <a href="{% url 'addtask' %}" class="edittask">Add task</a>
+    </div>
+    </div>
 </body>
 </html>

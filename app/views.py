@@ -7,13 +7,13 @@ from .forms import *
 def home(request):
     data=timezone.now().date().weekday()
     weekday={
-        '0':'monday',
-        '1':'tuesday',
-        '2':'wednesday',
-        '3':'thursday',
-        '4':'friday',
-        '5':'sataurday',
-        '6':'sunday',
+        '0':'Monday',
+        '1':'Tuesday',
+        '2':'Wednesday',
+        '3':'Thursday',
+        '4':'Friday',
+        '5':'Sataurday',
+        '6':'Sunday',
     }
     day=weekday[str(data)]
     d=breakfast.objects.get(dates=data)
@@ -51,7 +51,7 @@ def home(request):
 
 def converter(value):
     a=int (value)
-    choice = ['HPC','SE','DAA','CN','AI','BIG DATA','CN lab','DAA lab','no class']           
+    choice = ['HPC','SE','DAA','CN','AI','BIG DATA','CN lab','DAA lab','No class']           
     return choice[a-1]
 
 
