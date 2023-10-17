@@ -9,7 +9,10 @@
 <body>
     <form method="post">
         {% csrf_token %}
-        {{inputform}}
+        <label for="Task">Task</label>
+        {{inputform.todo}}<br>
+        <label for="Task">Date</label>
+        {{inputform.date}}
         <button type="submit">submit</button>
     </form>
     

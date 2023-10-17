@@ -4,6 +4,7 @@
 }
 html{
     margin:0%;
+   
 }
 
 .days{
@@ -70,4 +71,16 @@ td{
 .edittask:hover{
     font-size: 17px;
 
+}
+
+@media only screen and (max-width: 1600px) {
+    html{
+        margin: 0%;
+        display: -webkit-inline-box;
+    }
+}
+@media only screen and (max-width: 410px) {
+    html {
+        
+    }
 }

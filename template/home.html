@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
@@ -73,6 +73,7 @@
     <h3>{{forloop.couter}} {{a.todo}} <a href="{% url 'delete' a.uid %}" class="edittask">delete</a></h3>
     {% endfor %} 
     <a href="{% url 'addtask' %}" class="edittask">Add task</a>
+    </div>
     </div>
     </div>
 </body>
