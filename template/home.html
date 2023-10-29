@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/red.css' %}">
-    <title>Document</title>
+    <!-- important to import for chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>    
+    <title>Timetable</title>
 </head>
 <body>
     <div class="meal">
@@ -74,7 +76,79 @@
     {% endfor %} 
     <a href="{% url 'addtask' %}" class="edittask">Add task</a>
     </div>
+    <div class="cricket">
+        <h1>Cricket</h1><br>
+        {% for n,p in cricketdata %}
+        <p>{{n}}</p>
+        <p>{{p}}</p><br>
+        
+        {% endfor %}
+    </div>
+    <div class="chart">
+        <canvas id="canva" height="200px" width="200px"></canvas>
     </div>
     </div>
+    <div class="jobs">
+        <div class="job_padd">
+            <h1>Jobs</h1>
+            {% for n,p in internshala_jobdata %}
+            <p><a href="https://internshala.com/{{ p }}">{{n}}</a></p><br>
+            {% endfor %}
+        </div>
+    </div>
+    </div>  
+   
+    
+    
+    <script>
+        var today = new Date();
+        var day = today.getDate();
+        var lineChartData = {
+            labels: {{ dates| safe }},
+        datasets: [{
+            label: "DSA",
+            backgroundColor: "rgba(220,220,220,0.5)",
+            borderColor: "rgba(220,220,220,1)",
+            pointBackgroundColor: "rgba(220,220,220,1)",
+            pointBorderColor: "#fff",
+            data: {{ DSA| safe }},
+                
+            },
+        {
+            label: "PROJECT",
+            backgroundColor: "rgba(151,187,205,0.5)",
+            borderColor: "rgba(151,187,205,1)",
+            pointBackgroundColor: "rgba(151,187,205,1)",
+            pointBorderColor: "#fff",
+            data: {{ project| safe}}
+    
+            }
+        ]
+        };
+
+        var ctx = document.getElementById("canva").getContext("2d");
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: lineChartData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                aspectRatio: 2, 
+                scales: {
+                    x: {
+                        beginAtZero: true
+                    },
+                    y: {
+                        min: 0,
+                        max: 6,
+                        beginAtZero: false
+                    }
+                    
+                }
+            }
+        });
+    </script>
+
+   
 </body>
 </html>

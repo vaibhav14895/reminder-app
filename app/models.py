@@ -57,3 +57,8 @@ class tasks(models.Model):
     uid =models.UUIDField(default=uuid.uuid4,editable=False)
     todo=models.CharField(max_length=100,default="null")
     date=models.DateField(auto_now=False, auto_now_add=False)
+
+class Dataofdaily(models.Model):
+    dsa=models.IntegerField(default="0")
+    project=models.IntegerField(default="0")
+    date=models.DateField(unique=True)
